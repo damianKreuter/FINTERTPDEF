@@ -44,13 +44,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBoxDominioNegativo = new System.Windows.Forms.CheckBox();
-            this.checkBoxImagenNegativo = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.numerricEliminar = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkNegativo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -147,39 +144,40 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DecimalPlaces = 1;
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(264, 97);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(95, 20);
             this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.DecimalPlaces = 1;
+            this.numericUpDown2.DecimalPlaces = 2;
             this.numericUpDown2.Location = new System.Drawing.Point(365, 97);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            999999999,
+            9999999,
             0,
             0,
             0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(95, 20);
             this.numericUpDown2.TabIndex = 9;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             // 
             // label2
             // 
@@ -228,26 +226,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBoxDominioNegativo
-            // 
-            this.checkBoxDominioNegativo.AutoSize = true;
-            this.checkBoxDominioNegativo.Location = new System.Drawing.Point(261, 123);
-            this.checkBoxDominioNegativo.Name = "checkBoxDominioNegativo";
-            this.checkBoxDominioNegativo.Size = new System.Drawing.Size(69, 17);
-            this.checkBoxDominioNegativo.TabIndex = 15;
-            this.checkBoxDominioNegativo.Text = "Negativo";
-            this.checkBoxDominioNegativo.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxImagenNegativo
-            // 
-            this.checkBoxImagenNegativo.AutoSize = true;
-            this.checkBoxImagenNegativo.Location = new System.Drawing.Point(365, 123);
-            this.checkBoxImagenNegativo.Name = "checkBoxImagenNegativo";
-            this.checkBoxImagenNegativo.Size = new System.Drawing.Size(69, 17);
-            this.checkBoxImagenNegativo.TabIndex = 16;
-            this.checkBoxImagenNegativo.Text = "Negativo";
-            this.checkBoxImagenNegativo.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(368, 424);
@@ -270,21 +248,21 @@
             // 
             // numerricEliminar
             // 
-            this.numerricEliminar.DecimalPlaces = 1;
+            this.numerricEliminar.DecimalPlaces = 2;
             this.numerricEliminar.Location = new System.Drawing.Point(267, 228);
             this.numerricEliminar.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
+            this.numerricEliminar.Minimum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            -2147483648});
             this.numerricEliminar.Name = "numerricEliminar";
             this.numerricEliminar.Size = new System.Drawing.Size(194, 20);
             this.numerricEliminar.TabIndex = 19;
-            this.numerricEliminar.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
             // 
             // label6
             // 
@@ -295,28 +273,15 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "X a eliminar junto a su F(X)";
             // 
-            // checkNegativo
-            // 
-            this.checkNegativo.AutoSize = true;
-            this.checkNegativo.Location = new System.Drawing.Point(316, 255);
-            this.checkNegativo.Name = "checkNegativo";
-            this.checkNegativo.Size = new System.Drawing.Size(69, 17);
-            this.checkNegativo.TabIndex = 21;
-            this.checkNegativo.Text = "Negativo";
-            this.checkNegativo.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 479);
-            this.Controls.Add(this.checkNegativo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numerricEliminar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.checkBoxImagenNegativo);
-            this.Controls.Add(this.checkBoxDominioNegativo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -361,13 +326,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBoxDominioNegativo;
-        private System.Windows.Forms.CheckBox checkBoxImagenNegativo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.NumericUpDown numerricEliminar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkNegativo;
     }
 }
 

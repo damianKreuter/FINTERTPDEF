@@ -24,18 +24,9 @@ namespace WindowsFormsApp1
         private void buttonIngresarDatos_Click(object sender, EventArgs e)
         {
             DataGridView data = dataGridView1;
-            int i = 1;
-            if (checkBoxDominioNegativo.Checked)
-            {
-                i = -1;
-            }
-            float dominio = (float) numericUpDown1.Value * i;
-            i = 1;
-            if (checkBoxImagenNegativo.Checked)
-            {
-                i = -1;
-            }
-            float imagen = (float) numericUpDown2.Value * i;
+
+            float dominio = (float)numericUpDown1.Value;
+            float imagen = (float) numericUpDown2.Value;
 
 
             string dato = string.Empty;
@@ -127,12 +118,7 @@ namespace WindowsFormsApp1
         //ELIMINAR DOMINIO DE LA IMAGEN
         private void button3_Click(object sender, EventArgs e)
         {
-            int i = 1;
-            if (checkNegativo.Checked)
-            {
-                i = -1;
-            }
-            double dominio = (double)numerricEliminar.Value * i;
+            double dominio = (double)numerricEliminar.Value;
             int posicionDondeEsta = -1;
             int cant = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -155,6 +141,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("No existe la X que se quiere eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -92,17 +92,22 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.DecimalPlaces = 4;
             this.numericUpDown1.Location = new System.Drawing.Point(12, 101);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(124, 20);
             this.numericUpDown1.TabIndex = 9;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
             // 
             // labelResultado
             // 
