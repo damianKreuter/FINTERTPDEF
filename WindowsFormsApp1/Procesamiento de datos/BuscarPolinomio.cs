@@ -43,12 +43,19 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
         public float[] sumarPolinomios(float[] A, float[] B)
         {
             float[] retorno;
+            int cant = 0;
             if (A.Length < B.Length)
             {
-                retorno = new float[A.Length];
-                for(int i = 0; i< A.Length; i++)
+                retorno = new float[B.Length];
+                for(int i = 0; i< B.Length; i++)
                 {
+                    cant++;
                     retorno[i] = A[i] + B[i];
+                }
+                while (cant < B.Length)
+                {
+                    retorno[cant] = B[cant];
+                    cant++;
                 }
             } else if (A.Length == B.Length)
             {
@@ -59,10 +66,17 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
                 }
             } else
             {
-                retorno = new float[B.Length];
+                retorno = new float[A.Length];
+                
                 for (int i = 0; i < B.Length; i++)
                 {
+                    cant++;
                     retorno[i] = A[i] + B[i];
+                }
+                while (cant < A.Length)
+                {
+                    retorno[cant] = A[cant];
+                    cant++;
                 }
             }
             return retorno;

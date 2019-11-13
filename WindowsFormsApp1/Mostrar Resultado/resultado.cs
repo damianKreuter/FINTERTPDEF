@@ -75,8 +75,7 @@ namespace WindowsFormsApp1.Mostrar_Resultado
         private void buttonBuscarK_Click(object sender, EventArgs e)
         {
             float kBuscada = (float)numericUpDown1.Value;
-            if(kBuscada>= minimo  && kBuscada <= maximo)
-            {
+          
                 float resultadoBuscado = 0;
                 if (rbLagrange.Checked)
                 {
@@ -96,10 +95,7 @@ namespace WindowsFormsApp1.Mostrar_Resultado
                 }
 
                 labelResultado.Text = resultadoBuscado.ToString();
-            } else
-            {
-                MessageBox.Show("K = "+ kBuscada.ToString() + " no pertenece al rango de "+ labelMaximoYMinimo);
-            }
+            
             
         }
 

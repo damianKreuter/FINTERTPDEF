@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.Mostrar_datos
         private void esXEspaciado()
         {
             Boolean Esxespaciado = true;
-            float diferenciaInicia = datosDeX[1] - datosDeX[2];
+            float diferenciaInicia = datosDeX[0] - datosDeX[1];
 
             for(int i=0; i<datosDeX.Length-1; i++)
             {
@@ -100,8 +100,12 @@ namespace WindowsFormsApp1.Mostrar_datos
                 dataGridView2.Rows.Add(lagrange.buscandoFx(datosDeX, datosDeY));
 
                 dataGridViewFx.ColumnCount = 1;
-                dataGridViewFx.Columns[0].Name = "P(x)";        
-                dataGridViewFx.Rows.Add(lagrange.buscandoFxResuelto(datosDeX, datosDeY));
+                dataGridViewFx.Columns[0].Name = "P(x)";
+                float[] datos = lagrange.buscandoFxResuelto(datosDeX, datosDeY);
+                ponerGrado(datos);
+                dataGridViewFx.Rows.Add(polinomioAString(datos));
+
+                
             }
             else
             {
@@ -168,7 +172,10 @@ namespace WindowsFormsApp1.Mostrar_datos
 
                     dataGridViewFx.ColumnCount = 1;
                     dataGridViewFx.Columns[0].Name = "P(x)";
-                    dataGridViewFx.Rows.Add(nuevo.buscandoFxResueltoProgresivo(datosDeX, datosDeY));
+                    float[] datos = nuevo.buscandoFxResueltoProgresivo(datosDeX, datosDeY);
+
+                    ponerGrado(datos);
+                    dataGridViewFx.Rows.Add(polinomioAString(datos));
                 }
                 else
                 {
@@ -178,7 +185,10 @@ namespace WindowsFormsApp1.Mostrar_datos
 
                     dataGridViewFx.ColumnCount = 1;
                     dataGridViewFx.Columns[0].Name = "P(x)";
-                    dataGridViewFx.Rows.Add(nuevo.buscandoFxResueltoRegresivo(datosDeX, datosDeY));
+                    float[] datos = nuevo.buscandoFxResueltoRegresivo(datosDeX, datosDeY);
+
+                    ponerGrado(datos);
+                    dataGridViewFx.Rows.Add(polinomioAString(datos));
                 }
             }
         }
@@ -192,6 +202,26 @@ namespace WindowsFormsApp1.Mostrar_datos
           //      datosDeAlgoritmo = Procesamiento_de_datos.NewtonGregory.mostrarPasos(datos, tipoAlgoritmo);
             }
         }*/
+
+        private String polinomioAString(float[] datos)
+        {
+            Procesamiento_de_datos.BuscarPolinomio buscar = new Procesamiento_de_datos.BuscarPolinomio();
+            String retorno = buscar.obtenerStringPolinomio(datos);
+            return retorno;
+        }
+
+        private void ponerGrado(float[] pol)
+        {
+            int grado = 0;
+            for(int i = 1; i<pol.Length; i++)
+            {
+                if (pol[i] != 0)
+                {
+                    grado = i;
+                }
+            }
+            labelGrado.Text = grado.ToString();
+        }
 
         private float[,] crearTabla()
         {

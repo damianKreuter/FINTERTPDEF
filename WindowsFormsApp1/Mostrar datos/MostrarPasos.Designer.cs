@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labelResultado = new System.Windows.Forms.Label();
             this.labelGrado = new System.Windows.Forms.Label();
-            this.buttonBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.xespaciado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -137,16 +136,6 @@
             this.labelGrado.TabIndex = 10;
             this.labelGrado.Text = "labelGrado";
             // 
-            // buttonBuscar
-            // 
-            this.buttonBuscar.Location = new System.Drawing.Point(524, 472);
-            this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(182, 23);
-            this.buttonBuscar.TabIndex = 11;
-            this.buttonBuscar.Text = "Modificar valores iniciales";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
-            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -222,7 +211,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.xespaciado);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.labelGrado);
             this.Controls.Add(this.labelResultado);
             this.Controls.Add(this.label4);
@@ -255,7 +243,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelResultado;
         private System.Windows.Forms.Label labelGrado;
-        private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label xespaciado;
         private System.Windows.Forms.Label label6;

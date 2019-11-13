@@ -180,7 +180,7 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             return devolver;
         }
 
-        public String buscandoFxResuelto(float[] xArray, float[] yArray)
+        public float[] buscandoFxResuelto(float[] xArray, float[] yArray)
         {
             int size = xArray.Length;
 
@@ -195,9 +195,12 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             {
                 float y = yArray[i];
                 float[] res = new float[1];
-                res[0] = 1;
+                res[0] = 0;
                 valorYSobreLX = paraBuscarFx(xArray, i, y);
-                res = obtenerPolinomioDeLx(xArray, i, res);
+                for (int j = 0; j<1; j++)
+                {
+                    res = obtenerPolinomioDeLx(xArray, i, res);
+                }
                 res = buscar.multiplicarPolinomioXY(res, valorYSobreLX);
                 polAcumulado = buscar.sumarPolinomios(res, polAcumulado);
    /*                 lagrangePolynomial =
@@ -205,8 +208,7 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
                     obtenerLasXs(xArray, i);
                     */
             }
-            String retorno = buscar.obtenerStringPolinomio(polAcumulado);
-            return retorno;
+            return polAcumulado;
         }
 
         public String buscandoFx(float[] xArray, float[] yArray)
@@ -236,14 +238,24 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
         {
             Procesamiento_de_datos.BuscarPolinomio b = new BuscarPolinomio();
             int size = xArray.Length;
+            int primero = 0;
             for (int j = 0; j < size; j++)
             {
                 if (j != i)
                 {
                     float[] cosaX = new float[2];
-                    cosaX[0] = xArray[j];
+                    cosaX[0] = xArray[j]*(-1);
                     cosaX[1] = 1;
-                    polAnterior = b.multiplicarPolinomios(cosaX, polAnterior);
+                    if (primero != 0)
+                    {
+                        polAnterior = b.multiplicarPolinomios(cosaX, polAnterior);
+                    } else
+                    {
+                        polAnterior = new float[2];
+                        polAnterior = cosaX;
+                        primero++;
+                    }
+                    
                 }
             }
             return polAnterior;
@@ -273,15 +285,15 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             {
                 if (j != i)
                 {
-                    if (xArray[j] > 0)
-                    {
+        /*            if (xArray[j] > 0)
+                    {*/
                         
                         denominador *= xArray[i] - xArray[j];
-                    }
+              /*      }
                     else
                     {
-                        denominador *= xArray[i] + xArray[j];
-                    }
+                     //   denominador *= xArray[i] + xArray[j];
+                    }*/
                 }
             }
             double ret = (double)y / denominador;

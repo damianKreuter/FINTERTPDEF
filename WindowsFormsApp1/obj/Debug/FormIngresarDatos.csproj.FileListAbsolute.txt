@@ -12,3 +12,17 @@ C:\Users\Propietario\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\Propietario\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\Propietario\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Ingresar_datos.alterarValoresIniciales.resources
 C:\Users\Propietario\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Ingresar_datos.Inicial.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\FormIngresarDatos.csprojAssemblyReference.cache
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Ingresar_datos.alterarValoresIniciales.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Ingresar_datos.Inicial.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mostrar_datos.MostrarPasos.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mostrar_Resultado.resultado.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\FormIngresarDatos.csproj.GenerateResource.cache
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\FormIngresarDatos.csproj.CoreCompileInputs.cache
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Propietario\source\repos\WindowsFormsApp1\FINTERTPDEF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

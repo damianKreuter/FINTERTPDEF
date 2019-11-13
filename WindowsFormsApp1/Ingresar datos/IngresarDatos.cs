@@ -29,13 +29,14 @@ namespace WindowsFormsApp1
             {
                 i = -1;
             }
-            double dominio = (double) numericUpDown1.Value * i;
+            float dominio = (float) numericUpDown1.Value * i;
             i = 1;
             if (checkBoxImagenNegativo.Checked)
             {
                 i = -1;
             }
-            double imagen = (double) numericUpDown2.Value * i;
+            float imagen = (float) numericUpDown2.Value * i;
+
 
             string dato = string.Empty;
             Boolean sePuede = true;
@@ -46,9 +47,10 @@ namespace WindowsFormsApp1
                     dato = row.Cells[0].Value.ToString();
                     if (dominio.ToString().Equals(dato))
                     {
-                        //YA EXISTE EN LA TABLA ASI QUE MANDO ALERT 
-                        //Y TERMINO ESTA OPERACION
-                        MessageBox.Show("Ya existe el numero de dominio " + dominio.ToString() + " en la tabla a ingresar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        //YA EXISTE EN LA TABLA ASI QUE 
+                        //SOLO REEMPLAZO SU IMAGEN
+                        row.Cells[1].Value = imagen;
+             //           MessageBox.Show("Ya existe el numero de dominio " + dominio.ToString() + " en la tabla a ingresar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         sePuede = false;
                     }
                 }
@@ -56,6 +58,7 @@ namespace WindowsFormsApp1
             if (sePuede)
             {
                 dataGridView1.Rows.Add(dominio, imagen);
+                dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
      //           this.dataGridView1.Sort(dataGridView1.Columns["X"], ListSortDirection.Ascending);
             }
             
@@ -119,6 +122,39 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //ELIMINAR DOMINIO DE LA IMAGEN
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            if (checkNegativo.Checked)
+            {
+                i = -1;
+            }
+            double dominio = (double)numerricEliminar.Value * i;
+            int posicionDondeEsta = -1;
+            int cant = 0;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    String dato = row.Cells[0].Value.ToString();
+                    if (dominio.ToString().Equals(dato))
+                    {
+                        //EXISTE POR LO TANTO GUARDO SU POSICION PARA LUEGO ELIMINARLA
+                        posicionDondeEsta = cant;
+                    }
+                    cant++;
+                }
+            }
+            if (posicionDondeEsta >= 0)
+            {
+                dataGridView1.Rows.RemoveAt(posicionDondeEsta);
+            } else
+            {
+                MessageBox.Show("No existe la X que se quiere eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

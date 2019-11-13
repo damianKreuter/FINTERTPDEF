@@ -47,18 +47,23 @@
             this.checkBoxDominioNegativo = new System.Windows.Forms.CheckBox();
             this.checkBoxImagenNegativo = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.numerricEliminar = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkNegativo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerricEliminar)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonIngresarDatos
             // 
-            this.buttonIngresarDatos.Location = new System.Drawing.Point(264, 160);
+            this.buttonIngresarDatos.Location = new System.Drawing.Point(264, 146);
             this.buttonIngresarDatos.Name = "buttonIngresarDatos";
-            this.buttonIngresarDatos.Size = new System.Drawing.Size(196, 24);
+            this.buttonIngresarDatos.Size = new System.Drawing.Size(196, 46);
             this.buttonIngresarDatos.TabIndex = 0;
-            this.buttonIngresarDatos.Text = "Ingresar nuevo par de datos";
+            this.buttonIngresarDatos.Text = "Ingresar par de datos o modificar ya X existente";
             this.buttonIngresarDatos.UseVisualStyleBackColor = true;
             this.buttonIngresarDatos.Click += new System.EventHandler(this.buttonIngresarDatos_Click);
             // 
@@ -72,7 +77,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(243, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(243, 350);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -90,9 +95,9 @@
             // 
             // buttonCalcularInterpolante
             // 
-            this.buttonCalcularInterpolante.Location = new System.Drawing.Point(12, 352);
+            this.buttonCalcularInterpolante.Location = new System.Drawing.Point(12, 424);
             this.buttonCalcularInterpolante.Name = "buttonCalcularInterpolante";
-            this.buttonCalcularInterpolante.Size = new System.Drawing.Size(146, 43);
+            this.buttonCalcularInterpolante.Size = new System.Drawing.Size(154, 43);
             this.buttonCalcularInterpolante.TabIndex = 2;
             this.buttonCalcularInterpolante.Text = "Mostrar pasos del calculo";
             this.buttonCalcularInterpolante.UseVisualStyleBackColor = true;
@@ -102,7 +107,7 @@
             // 
             this.radioButtonLagrange.AutoSize = true;
             this.radioButtonLagrange.Checked = true;
-            this.radioButtonLagrange.Location = new System.Drawing.Point(262, 231);
+            this.radioButtonLagrange.Location = new System.Drawing.Point(273, 331);
             this.radioButtonLagrange.Name = "radioButtonLagrange";
             this.radioButtonLagrange.Size = new System.Drawing.Size(70, 17);
             this.radioButtonLagrange.TabIndex = 3;
@@ -114,7 +119,7 @@
             // radioButtonNewtonProgresivo
             // 
             this.radioButtonNewtonProgresivo.AutoSize = true;
-            this.radioButtonNewtonProgresivo.Location = new System.Drawing.Point(262, 255);
+            this.radioButtonNewtonProgresivo.Location = new System.Drawing.Point(273, 355);
             this.radioButtonNewtonProgresivo.Name = "radioButtonNewtonProgresivo";
             this.radioButtonNewtonProgresivo.Size = new System.Drawing.Size(154, 17);
             this.radioButtonNewtonProgresivo.TabIndex = 4;
@@ -124,7 +129,7 @@
             // radioButtonNetwonRegresivo
             // 
             this.radioButtonNetwonRegresivo.AutoSize = true;
-            this.radioButtonNetwonRegresivo.Location = new System.Drawing.Point(262, 279);
+            this.radioButtonNetwonRegresivo.Location = new System.Drawing.Point(273, 379);
             this.radioButtonNetwonRegresivo.Name = "radioButtonNetwonRegresivo";
             this.radioButtonNetwonRegresivo.Size = new System.Drawing.Size(148, 17);
             this.radioButtonNetwonRegresivo.TabIndex = 5;
@@ -134,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(261, 204);
+            this.label1.Location = new System.Drawing.Point(272, 304);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(128, 13);
             this.label1.TabIndex = 6;
@@ -215,9 +220,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(261, 352);
+            this.button1.Location = new System.Drawing.Point(172, 424);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 43);
+            this.button1.Size = new System.Drawing.Size(187, 43);
             this.button1.TabIndex = 14;
             this.button1.Text = "Especializar el polinomio en K";
             this.button1.UseVisualStyleBackColor = true;
@@ -245,19 +250,70 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 424);
+            this.button2.Location = new System.Drawing.Point(368, 424);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 43);
+            this.button2.Size = new System.Drawing.Size(93, 43);
             this.button2.TabIndex = 17;
             this.button2.Text = "Finalizar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(267, 278);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(193, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Eliminar X y su imagen";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // numerricEliminar
+            // 
+            this.numerricEliminar.DecimalPlaces = 1;
+            this.numerricEliminar.Location = new System.Drawing.Point(267, 228);
+            this.numerricEliminar.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numerricEliminar.Name = "numerricEliminar";
+            this.numerricEliminar.Size = new System.Drawing.Size(194, 20);
+            this.numerricEliminar.TabIndex = 19;
+            this.numerricEliminar.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(264, 203);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(132, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "X a eliminar junto a su F(X)";
+            // 
+            // checkNegativo
+            // 
+            this.checkNegativo.AutoSize = true;
+            this.checkNegativo.Location = new System.Drawing.Point(316, 255);
+            this.checkNegativo.Name = "checkNegativo";
+            this.checkNegativo.Size = new System.Drawing.Size(69, 17);
+            this.checkNegativo.TabIndex = 21;
+            this.checkNegativo.Text = "Negativo";
+            this.checkNegativo.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(472, 479);
+            this.Controls.Add(this.checkNegativo);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numerricEliminar);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBoxImagenNegativo);
             this.Controls.Add(this.checkBoxDominioNegativo);
@@ -281,6 +337,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numerricEliminar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,6 +364,10 @@
         private System.Windows.Forms.CheckBox checkBoxDominioNegativo;
         private System.Windows.Forms.CheckBox checkBoxImagenNegativo;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown numerricEliminar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox checkNegativo;
     }
 }
 

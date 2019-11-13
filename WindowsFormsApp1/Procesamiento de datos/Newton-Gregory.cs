@@ -38,6 +38,59 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             return pro;
         }
 
+        private float[] obtenerPolinomioDeLxRegresivo(float[] xArray, int grado, float[] polAnterior)
+        {
+            Procesamiento_de_datos.BuscarPolinomio b = new BuscarPolinomio();
+            int size = xArray.Length - 1;
+            int primero = 0;
+            for (int j = 0; j < grado; j++)
+            {
+                float[] cosaX = new float[2];
+                cosaX[0] = xArray[size] * (-1);
+                cosaX[1] = 1;
+                polAnterior = b.multiplicarPolinomios(cosaX, polAnterior);
+                size--;
+            }
+            return polAnterior;
+        }
+
+        private float[] obtenerPolinomioDeLxProgresivo(float[] xArray, int grado, float[] polAnterior)
+        {
+            Procesamiento_de_datos.BuscarPolinomio b = new BuscarPolinomio();
+            int size = xArray.Length;
+            int primero = 0;
+            for (int j = 0; j < grado; j++)
+            {
+                    float[] cosaX = new float[2];
+                    cosaX[0] = xArray[j] * (-1);
+                    cosaX[1] = 1;
+                    polAnterior = b.multiplicarPolinomios(cosaX, polAnterior);
+            }
+            return polAnterior;
+        }
+
+        private float[] protermFloat(int i, float[] x)
+        {
+            float[] nuevo = new float[1];
+            nuevo[0] = 1;
+     //       for(int j = 0; j<i; j++)
+      //      {
+                nuevo = obtenerPolinomioDeLxProgresivo(x, i, nuevo);
+      //      }
+            return nuevo;
+        }
+
+        private float[] regtermFloat(int i, float[] x)
+        {
+            float[] nuevo = new float[1];
+            nuevo[0] = 1;
+          //  for (int j = 0; j < i; j++)
+          //  {
+                nuevo = obtenerPolinomioDeLxRegresivo(x, i, nuevo);
+          //  }
+            return nuevo;
+        }
+
         static float regterm(int i, float value, float[] x)
         {
             int tamanio = x.Length - 1;
@@ -125,7 +178,7 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             
             //tomar el mas grande de estos
             
-            int tamanio = x.Length;
+            int tamanio = x.Length-1;
             float sum = y[tamanio, 0];
             for (int i = 1; i < x.Length; i++)
             {
@@ -135,26 +188,63 @@ namespace WindowsFormsApp1.Procesamiento_de_datos
             return sum;
         }
 
-        public String buscandoFxResueltoProgresivo(float[] x, float[] datosDeY)
+        private float[] multiplicarTodosPor(float[] A, float y)
         {
+            for(int i = 0; i < A.Length; i++)
+            {
+                A[i] *= y;
+            }
+            return A;
+        }
+
+        public float[] buscandoFxResueltoRegresivo(float[] xs, float[] ys)
+        {
+            Procesamiento_de_datos.BuscarPolinomio buscar = new BuscarPolinomio();
+            String devolver = "";
+            float[,] y = obtenerTablaDeDiferenciasDivididas(xs, crearTabla(ys), xs.Length);
+            int tamanio = ys.Length - 1;
+            devolver = y[0, 0].ToString();
+            float[] cuentas = new float[1];
+            cuentas[0] = 0;
+            int mayor = xs.Length - 1;
+            for (int i = 0; i < xs.Length; i++)
+            {
+                //      if (i > 1)
+                //      {
+                float[] temporal = multiplicarTodosPor(regtermFloat(i, xs), y[mayor, i]);
+                cuentas = buscar.sumarPolinomios(temporal, cuentas);
+                mayor--;
+                /*        }
+                        else
+                        {
+                            cuentas = multiplicarTodosPor(protermFloat(i, x), y[0, i]);
+                        }*/
+            }
+            return cuentas;
+        }
+
+        public float[] buscandoFxResueltoProgresivo(float[] x, float[] datosDeY)
+        {
+            Procesamiento_de_datos.BuscarPolinomio buscar = new BuscarPolinomio();
             String devolver = "";
             float[,] y = obtenerTablaDeDiferenciasDivididas(x, crearTabla(datosDeY), x.Length);
             int tamanio = datosDeY.Length - 1;
             devolver = y[0, 0].ToString();
-            for (int i = 1; i < x.Length; i++)
+            float[] cuentas =  new float[1];
+            cuentas[0] = 0;
+            for (int i = 0; i < x.Length; i++)
             {
-                if (i > 1)
-                {
-                    devolver =
-                    devolver + "+(" + y[0, i].ToString() + ")" + (protermString(i, x));
-                }
+          //      if (i > 1)
+          //      {
+                    float[] temporal = multiplicarTodosPor(protermFloat(i, x), y[0, i]);
+                    cuentas = buscar.sumarPolinomios(temporal, cuentas);
+        /*        }
                 else
                 {
-                    devolver =
-                    devolver + "+(" + y[0, i].ToString() + ")" + (protermString(i, x));
-                }
+                    cuentas = multiplicarTodosPor(protermFloat(i, x), y[0, i]);
+                }*/
             }
-            return devolver;
+            return cuentas;
         }
 
         public String formulaProgresiva(float[] x, float[] datosDeY)

@@ -27,5 +27,10 @@ namespace WindowsFormsApp1.Ingresar_datos
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
