@@ -14,11 +14,14 @@ namespace WindowsFormsApp1
     {
         private DataGridView datosOriginales;
 
+        private float[] polinomioAnterior;
+
         public Form1()
         {
             datosOriginales = dataGridView1;
             InitializeComponent();
             radioButtonLagrange.Checked = true;
+            polinomioAnterior = null;
         }
 
         private void buttonIngresarDatos_Click(object sender, EventArgs e)
@@ -78,7 +81,7 @@ namespace WindowsFormsApp1
             }
             else tipoAlgoritmo = "Newton-Gregory regresivo";
             Mostrar_datos.MostrarPasos pasos =
-                new Mostrar_datos.MostrarPasos(dataGridView1, tipoAlgoritmo);
+                new Mostrar_datos.MostrarPasos(dataGridView1, tipoAlgoritmo, polinomioAnterior, this);
             pasos.Show();
                 
         }
@@ -103,6 +106,11 @@ namespace WindowsFormsApp1
             Mostrar_Resultado.resultado pasos =
                 new Mostrar_Resultado.resultado(dataGridView1, tipoAlgoritmo);
             pasos.Show();
+        }
+
+        public void actualizarPolinomio(float[] pol)
+        {
+            polinomioAnterior = pol;
         }
 
         private void radioButtonLagrange_CheckedChanged(object sender, EventArgs e)

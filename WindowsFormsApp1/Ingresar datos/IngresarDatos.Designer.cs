@@ -56,7 +56,7 @@
             // 
             // buttonIngresarDatos
             // 
-            this.buttonIngresarDatos.Location = new System.Drawing.Point(264, 146);
+            this.buttonIngresarDatos.Location = new System.Drawing.Point(264, 123);
             this.buttonIngresarDatos.Name = "buttonIngresarDatos";
             this.buttonIngresarDatos.Size = new System.Drawing.Size(196, 46);
             this.buttonIngresarDatos.TabIndex = 0;
@@ -238,7 +238,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(267, 278);
+            this.button3.Location = new System.Drawing.Point(267, 254);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(193, 23);
             this.button3.TabIndex = 18;

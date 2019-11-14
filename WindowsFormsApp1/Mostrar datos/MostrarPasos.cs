@@ -21,9 +21,15 @@ namespace WindowsFormsApp1.Mostrar_datos
         private float[] datosDeX;
         private float[] datosDeY;
 
-        public MostrarPasos(DataGridView datos, String tipoAlgoritmo)
+        private float[] polAnterior;
+        Form1 ingresarDatos;
+        public MostrarPasos(DataGridView datos, String tipoAlgoritmo, float[] polinomioAnterior,
+            Form1 ingresarDatos)
         {
+            this.ingresarDatos = ingresarDatos;
             InitializeComponent();
+            polAnterior = polinomioAnterior;
+
             int cantidadIteraciones = datos.RowCount - 1;
             datosDeX = new float[cantidadIteraciones];
             datosDeY = new float[cantidadIteraciones];
@@ -43,15 +49,54 @@ namespace WindowsFormsApp1.Mostrar_datos
             esXEspaciado();
 
             llenarXs();
+            
+        }
+
+        private void chequearSiElPolinomioObtenidoDifiereDelAnterior(float[] polObtenido)
+        {
+
+            Boolean esDiferente = false;
+            if(polAnterior != null)
+            {
+                if (polAnterior.Length != polObtenido.Length)
+                {
+                    esDiferente = true;
+                }
+                if (esDiferente)
+                {
+                    MessageBox.Show("Los cambios en la grilla dieron un Polinomio distinto",
+                         "P(x) diferente");
+                }
+                else
+                {
+                    for (int i = 0; i < polAnterior.Length; i++)
+                    {
+                        if (polAnterior[i] != polObtenido[i])
+                        {
+                            esDiferente = true;
+                        }
+                    }
+                }
+            }
+            
+            if (esDiferente)
+            {
+                MessageBox.Show("Los cambios en la grilla dieron un Polinomio distinto",
+                     "P(x) diferente");
+            }
+
+            polAnterior = polObtenido;
         }
 
         private void llenarXs()
         {
-            dataGridView3.ColumnCount = 1;
+            dataGridView3.ColumnCount = 2;
             dataGridView3.Columns[0].Name = "X";
-            for(int i =0; i < datosDeX.Length; i++)
+            dataGridView3.Columns[1].Name = "Y";
+            for (int i =0; i < datosDeX.Length; i++)
             {
-                dataGridView3.Rows.Add(datosDeX[i].ToString());
+                dataGridView3.Rows.Add(datosDeX[i].ToString(), datosDeY[i].ToString());
+
             }
         }
 
@@ -105,7 +150,7 @@ namespace WindowsFormsApp1.Mostrar_datos
                 ponerGrado(datos);
                 dataGridViewFx.Rows.Add(polinomioAString(datos));
 
-                
+                chequearSiElPolinomioObtenidoDifiereDelAnterior(datos);
             }
             else
             {
@@ -176,6 +221,7 @@ namespace WindowsFormsApp1.Mostrar_datos
 
                     ponerGrado(datos);
                     dataGridViewFx.Rows.Add(polinomioAString(datos));
+                    chequearSiElPolinomioObtenidoDifiereDelAnterior(datos);
                 }
                 else
                 {
@@ -189,6 +235,7 @@ namespace WindowsFormsApp1.Mostrar_datos
 
                     ponerGrado(datos);
                     dataGridViewFx.Rows.Add(polinomioAString(datos));
+                    chequearSiElPolinomioObtenidoDifiereDelAnterior(datos);
                 }
             }
         }
@@ -266,6 +313,7 @@ namespace WindowsFormsApp1.Mostrar_datos
 
         private void buttonVolver_Click_1(object sender, EventArgs e)
         {
+            ingresarDatos.actualizarPolinomio(polAnterior);
             this.Close();
         }
 
@@ -275,6 +323,11 @@ namespace WindowsFormsApp1.Mostrar_datos
                 new Ingresar_datos.alterarValoresIniciales(this, datosDeX, datosDeY);
 
             valores.Show();
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 
