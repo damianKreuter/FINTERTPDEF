@@ -175,34 +175,44 @@ namespace WindowsFormsApp1.Mostrar_Resultado
 
         private void rbLagrange_CheckedChanged(object sender, EventArgs e)
         {
-            Procesamiento_de_datos.Lagrange lagrange = new Procesamiento_de_datos.Lagrange();
-            datosDePolinomio = lagrange.buscandoFxResuelto(datosDeX, datosDeY);
-            DataGridView nuevoData = new DataGridView();
-            nuevoData.RowCount = 1;
-            nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
-            dataGridView1 = nuevoData;
+            if (rbLagrange.Checked)
+            {
+                Procesamiento_de_datos.Lagrange lagrange = new Procesamiento_de_datos.Lagrange();
+                datosDePolinomio = lagrange.buscandoFxResuelto(datosDeX, datosDeY);
+                DataGridView nuevoData = new DataGridView();
+                nuevoData.RowCount = 1;
+                nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
+                dataGridView1 = nuevoData;
+            }
         }
 
         private void radioButtonProgesivo_CheckedChanged(object sender, EventArgs e)
         {
-            Procesamiento_de_datos.Newton_Gregory nuevo = new Procesamiento_de_datos.Newton_Gregory();
-            
-            datosDePolinomio = nuevo.buscandoFxResueltoProgresivo(datosDeX, datosDeY);
+            if (radioButtonProgesivo.Checked)
+            {
+                Procesamiento_de_datos.Newton_Gregory nuevo = new Procesamiento_de_datos.Newton_Gregory();
 
-            DataGridView nuevoData = new DataGridView();
-            nuevoData.RowCount = 1;
-            nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
-            dataGridView1 = nuevoData;
+                datosDePolinomio = nuevo.buscandoFxResueltoProgresivo(datosDeX, datosDeY);
+
+                DataGridView nuevoData = new DataGridView();
+                nuevoData.RowCount = 1;
+                nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
+                dataGridView1 = nuevoData;
+            }
+            
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            Procesamiento_de_datos.Newton_Gregory nuevo = new Procesamiento_de_datos.Newton_Gregory();
-            datosDePolinomio = nuevo.buscandoFxResueltoRegresivo(datosDeX, datosDeY);
-            DataGridView nuevoData = new DataGridView();
-            nuevoData.RowCount = 1;
-            nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
-            dataGridView1 = nuevoData;
+            if (radioButton2.Checked)
+            {
+                Procesamiento_de_datos.Newton_Gregory nuevo = new Procesamiento_de_datos.Newton_Gregory();
+                datosDePolinomio = nuevo.buscandoFxResueltoRegresivo(datosDeX, datosDeY);
+                DataGridView nuevoData = new DataGridView();
+                nuevoData.RowCount = 1;
+                nuevoData.Rows.Add(polinomioAString(datosDePolinomio));
+                dataGridView1 = nuevoData;
+            }
         }
     }
 }
